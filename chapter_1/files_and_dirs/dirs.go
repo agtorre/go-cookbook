@@ -29,7 +29,7 @@ func Operate() error {
 		return err
 	}
 
-	// we write a known length value to the file and validate
+	// we write a known-length value to the file and validate
 	// that it wrote correctly
 	value := []byte("hello\n")
 	count, err := f.Write(value)
