@@ -57,7 +57,7 @@ func (c *Config) Setup() {
 	// shorthand
 	flag.StringVar(&c.subject, "s", "", "subject is a string, it defaults to empty (shorthand)")
 
-	flag.BoolVar(&c.isAwesome, "isawesome", true, "is go awesome or what?")
+	flag.BoolVar(&c.isAwesome, "isawesome", false, "is go awesome or what?")
 	flag.IntVar(&c.howAwesome, "howawesome", 10, "how awesome out of 10?")
 
 	// custom variable type
