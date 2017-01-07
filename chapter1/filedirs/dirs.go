@@ -8,15 +8,15 @@ import (
 
 // Operate manipulates files and directories
 func Operate() error {
-	// this 0777 is similar to what you'd see with chown on a command line
-	// this will create a director /tmp/example, you may also use
-	// an absolute path instead of a relative one
-	if err := os.Mkdir("example", os.FileMode(0755)); err != nil {
+	// this 0777 is similar to what you'd see with chown
+	// on a command line this will create a director /tmp/example,
+	// you may also use an absolute path instead of a relative one
+	if err := os.Mkdir("example_dir", os.FileMode(0755)); err != nil {
 		return err
 	}
 
 	// go to the /tmp directory
-	if err := os.Chdir("example"); err != nil {
+	if err := os.Chdir("example_dir"); err != nil {
 		return err
 	}
 
@@ -64,7 +64,7 @@ func Operate() error {
 	// cleanup, os.RemoveAll can be dangerous if you
 	// point at the wrong directory, use user input,
 	// and especially if you run as root
-	if err := os.RemoveAll("example"); err != nil {
+	if err := os.RemoveAll("example_dir"); err != nil {
 		return err
 	}
 

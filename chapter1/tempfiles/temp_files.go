@@ -9,10 +9,11 @@ import (
 // WorkWithTemp will give some basic patterns for working
 // with temporary files and directories
 func WorkWithTemp() error {
-	// If you need a temporary place to store files with the same name
-	// ie. template1-10.html a temp directory is a good way to approach
-	// it, the first argument being blank means it will use create the
-	// directory in the location returned by os.TempDir()
+	// If you need a temporary place to store files with the
+	// same name ie. template1-10.html a temp directory is a good
+	// way to approach it, the first argument being blank means it
+	// will use create the directory in the location returned by
+	// os.TempDir()
 	t, err := ioutil.TempDir("", "tmp")
 	if err != nil {
 		return err
