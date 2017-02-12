@@ -5,9 +5,13 @@ import (
 	"fmt"
 )
 
-// ErrorTyped is a way to make a package level
-// error to check against. I.e. if err == TypedError
-var ErrorTyped = errors.New("this is a typed error")
+// ErrorValue is a way to make a package level
+// error to check against. I.e. if err == ErrorValue
+var ErrorValue = errors.New("this is a typed error")
+
+// TypedError is a way to make an error type
+// you can do err.(type) == ErrorValue
+type TypedError error
 
 //BasicErrors demonstrates some ways to create errors
 func BasicErrors() {
@@ -17,6 +21,10 @@ func BasicErrors() {
 	err = fmt.Errorf("an error occurred: %s", "something")
 	fmt.Println("fmt.Errorf: ", err)
 
-	err = ErrorTyped
+	err = ErrorValue
+	fmt.Println("value error: ", err)
+
+	err = TypedError(errors.New("typed error"))
 	fmt.Println("typed error: ", err)
+
 }
