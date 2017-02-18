@@ -2,6 +2,8 @@ package database
 
 import (
 	"database/sql"
+	"fmt"
+	"os"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql" //we import supported libraries for database/sql
@@ -16,7 +18,7 @@ type Example struct {
 // Setup configures and returns our database
 // connection poold
 func Setup() (*sql.DB, error) {
-	db, err := sql.Open("mysql", "username:password@/gocookbook?parseTime=true")
+	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@/gocookbook?parseTime=true", os.Getenv("MYSQLUSERNAME"), os.Getenv("MYSQLPASSWORD")))
 	if err != nil {
 		return nil, err
 	}
