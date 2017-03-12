@@ -10,7 +10,7 @@ import (
 // type assertion to it
 func Unwrap() {
 
-	err := error(ErrorTyped(errors.New("an error occurred")))
+	err := error(ErrorTyped{errors.New("an error occurred")})
 	err = errors.Wrap(err, "wrapped")
 
 	fmt.Println("wrapped error: ", err)
@@ -27,7 +27,7 @@ func Unwrap() {
 // StackTrace will print all the stack for
 // the error
 func StackTrace() {
-	err := error(ErrorTyped(errors.New("an error occurred")))
+	err := error(ErrorTyped{errors.New("an error occurred")})
 	err = errors.Wrap(err, "wrapped")
 
 	fmt.Printf("%+v\n", err)

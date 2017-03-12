@@ -13,7 +13,9 @@ func WrappedError(e error) error {
 }
 
 // ErrorTyped is a error we can check against
-type ErrorTyped error
+type ErrorTyped struct {
+	error
+}
 
 // Wrap shows what happens when we wrap an error
 func Wrap() {
@@ -21,7 +23,7 @@ func Wrap() {
 
 	fmt.Println("Regular Error - ", WrappedError(e))
 
-	fmt.Println("Typed Error - ", WrappedError(ErrorTyped(errors.New("typed error"))))
+	fmt.Println("Typed Error - ", WrappedError(ErrorTyped{errors.New("typed error")}))
 
 	fmt.Println("Nil -", WrappedError(nil))
 

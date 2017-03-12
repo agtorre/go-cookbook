@@ -11,7 +11,9 @@ var ErrorValue = errors.New("this is a typed error")
 
 // TypedError is a way to make an error type
 // you can do err.(type) == ErrorValue
-type TypedError error
+type TypedError struct {
+	error
+}
 
 //BasicErrors demonstrates some ways to create errors
 func BasicErrors() {
@@ -24,7 +26,7 @@ func BasicErrors() {
 	err = ErrorValue
 	fmt.Println("value error: ", err)
 
-	err = TypedError(errors.New("typed error"))
+	err = TypedError{errors.New("typed error")}
 	fmt.Println("typed error: ", err)
 
 }
