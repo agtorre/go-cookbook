@@ -26,7 +26,7 @@ func TestWrappedError(t *testing.T) {
 	}
 }
 
-func TestTestWrap(t *testing.T) {
+func TestWrap(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
@@ -34,7 +34,7 @@ func TestTestWrap(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			TestWrap()
+			Wrap()
 		})
 	}
 }
