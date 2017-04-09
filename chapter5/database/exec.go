@@ -1,14 +1,15 @@
 package database
 
-import _ "github.com/go-sql-driver/mysql" //we import supported libraries for database/sql
-// Exec grabs a new connection
+import (
+	"database/sql"
+
+	_ "github.com/go-sql-driver/mysql" //we import supported libraries for database/sql
+)
+
+// Exec takes a new connection
 // creates tables, and later drops them
 // and issues some queries
-func Exec() error {
-	db, err := Setup()
-	if err != nil {
-		return err
-	}
+func Exec(db *sql.DB) error {
 	// uncaught error on cleanup, but we always
 	// want to cleanup
 	defer db.Exec("DROP TABLE example")
@@ -21,5 +22,4 @@ func Exec() error {
 		return err
 	}
 	return nil
-
 }
