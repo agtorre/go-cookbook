@@ -1,4 +1,4 @@
-package docker
+package orchestrate
 
 import (
 	"fmt"

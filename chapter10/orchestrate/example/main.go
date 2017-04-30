@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/agtorre/go-cookbook/chapter10/docker"
+	"github.com/agtorre/go-cookbook/chapter10/orchestrate"
 	mgo "gopkg.in/mgo.v2"
 )
 
@@ -10,7 +10,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	if err := docker.ConnectAndQuery(session); err != nil {
+	if err := orchestrate.ConnectAndQuery(session); err != nil {
 		panic(err)
 	}
 }
