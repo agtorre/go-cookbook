@@ -7,7 +7,10 @@ import (
 )
 
 func main() {
-	r := ansicolor.ColorText{ansicolor.Red, "I'm red!"}
+	r := ansicolor.ColorText{
+		TextColor: ansicolor.Red,
+		Text:      "I'm red!",
+	}
 
 	fmt.Println(r.String())
 

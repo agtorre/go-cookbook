@@ -30,7 +30,7 @@ func main() {
 			}
 			if len(os.Args) > 3 {
 				if err := f.Parse(os.Args[3:]); err != nil {
-					fmt.Printf("Error parsing params %s, error: %v", os.Args[3:], err)
+					fmt.Fprintf(os.Stderr, "Error parsing params %s, error: %v", os.Args[3:], err)
 					return
 				}
 

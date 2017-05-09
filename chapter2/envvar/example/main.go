@@ -18,6 +18,8 @@ type Config struct {
 }
 
 func main() {
+	var err error
+
 	// create a temporary file to hold
 	// an example json file
 	tf, err := ioutil.TempFile("", "tmp")
@@ -32,15 +34,22 @@ func main() {
 	secrets := `{
         "secret": "so so secret"
     }`
-	tf.Write(bytes.NewBufferString(secrets).Bytes())
+
+	if _, err = tf.Write(bytes.NewBufferString(secrets).Bytes()); err != nil {
+		panic(err)
+	}
 
 	// We can easily set environment variables
 	// as needed
-	os.Setenv("EXAMPLE_VERSION", "1.0.0")
-	os.Setenv("EXAMPLE_ISSAFE", "false")
+	if err = os.Setenv("EXAMPLE_VERSION", "1.0.0"); err != nil {
+		panic(err)
+	}
+	if err = os.Setenv("EXAMPLE_ISSAFE", "false"); err != nil {
+		panic(err)
+	}
 
 	c := Config{}
-	if err := envvar.LoadConfig(tf.Name(), "EXAMPLE", &c); err != nil {
+	if err = envvar.LoadConfig(tf.Name(), "EXAMPLE", &c); err != nil {
 		panic(err)
 	}
 
