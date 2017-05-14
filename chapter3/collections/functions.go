@@ -21,9 +21,6 @@ func IncrementVersion(w WorkWith) WorkWith {
 // the specified amount
 func OldVersion(v int) func(w WorkWith) bool {
 	return func(w WorkWith) bool {
-		if w.Version >= v {
-			return true
-		}
-		return false
+		return w.Version >= v
 	}
 }
