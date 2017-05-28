@@ -22,8 +22,6 @@ func ExecWithTimeout() error {
 	defer can()
 
 	// our transaction is context aware
-	if _, err := db.BeginTx(ctx, nil); err != nil {
-		return err
-	}
-	return nil
+	_, err = db.BeginTx(ctx, nil)
+	return err
 }
