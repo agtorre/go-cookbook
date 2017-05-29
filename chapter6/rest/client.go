@@ -11,7 +11,7 @@ type APIClient struct {
 // custom Transport
 func NewAPIClient(username, password string) *APIClient {
 	t := http.Transport{}
-	c := APIClient{
+	return &APIClient{
 		Client: &http.Client{
 			Transport: &APITransport{
 				Transport: &t,
@@ -20,7 +20,6 @@ func NewAPIClient(username, password string) *APIClient {
 			},
 		},
 	}
-	return &c
 }
 
 // GetGoogle is an API Call - we abstract away
