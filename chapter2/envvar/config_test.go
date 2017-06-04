@@ -45,7 +45,9 @@ func TestLoadFile(t *testing.T) {
 	defer tf.Close()
 	defer os.Remove(tf.Name())
 
-	tf.Write(bytes.NewBufferString("{}").Bytes())
+	if _, err := tf.Write(bytes.NewBufferString("{}").Bytes()); err != nil {
+		t.Errorf("Error writing into temp file, err: %v ", err)
+	}
 
 	type args struct {
 		path   string

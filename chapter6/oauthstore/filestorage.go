@@ -47,6 +47,7 @@ func (f *FileStorage) SetToken(t *oauth2.Token) error {
 	if err != nil {
 		return err
 	}
-	out.Write(data)
-	return nil
+
+	_, err = out.Write(data)
+	return err
 }

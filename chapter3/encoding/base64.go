@@ -38,7 +38,9 @@ func Base64ExampleEncoder() error {
 	encoder := base64.NewEncoder(base64.StdEncoding, &buffer)
 
 	// be sure to close
-	encoder.Close()
+	if err := encoder.Close(); err != nil {
+		return err
+	}
 	if _, err := encoder.Write([]byte("encoding some other data")); err != nil {
 		return err
 	}

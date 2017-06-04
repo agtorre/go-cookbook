@@ -26,7 +26,7 @@ func (v *nullInt64) UnmarshalJSON(b []byte) error {
 	v.Valid = false
 	if b != nil {
 		v.Valid = true
-		json.Unmarshal(b, &v.Int64)
+		return json.Unmarshal(b, &v.Int64)
 	}
 	return nil
 }

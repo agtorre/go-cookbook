@@ -3,13 +3,14 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 )
 
 // WordCount takes a file and returns a map
 // with each word as a key and it's number of
 // appearances as a value
-func WordCount(f *os.File) map[string]int {
+func WordCount(f io.Reader) map[string]int {
 	result := make(map[string]int)
 
 	// make a scanner to work on the file

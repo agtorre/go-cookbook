@@ -24,8 +24,5 @@ func Query(db *sql.DB) error {
 		}
 		fmt.Printf("Results:\n\tName: %s\n\tCreated: %v\n", e.Name, e.Created)
 	}
-	if err := rows.Err(); err != nil {
-		return err
-	}
-	return nil
+	return rows.Err()
 }
