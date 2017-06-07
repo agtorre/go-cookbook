@@ -14,6 +14,8 @@ func Setup() (*redis.Client, error) {
 		DB:       0, // use default DB
 	})
 
+	// commands returns "PONG", tests if
+	// connection alive
 	_, err := client.Ping().Result()
 	return client, err
 }
