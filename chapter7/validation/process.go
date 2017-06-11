@@ -8,7 +8,7 @@ import (
 
 // Process is a handler that validates a post payload
 func (c *Controller) Process(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
+	if r.Method != http.MethodPost {
 		w.WriteHeader(http.StatusMethodNotAllowed)
 		return
 	}

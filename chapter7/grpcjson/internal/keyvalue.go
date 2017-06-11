@@ -2,6 +2,7 @@ package internal
 
 import (
 	"golang.org/x/net/context"
+	"sync"
 
 	"github.com/agtorre/go-cookbook/chapter7/grpcjson/keyvalue"
 	"google.golang.org/grpc"
@@ -10,7 +11,8 @@ import (
 
 // KeyValue is a struct that holds a map
 type KeyValue struct {
-	m map[string]string
+	mutex sync.RWMutex
+	m     map[string]string
 }
 
 // NewKeyValue initializes the map and controller
@@ -22,13 +24,17 @@ func NewKeyValue() *KeyValue {
 
 // Set sets a value to a key, then returns the value
 func (k *KeyValue) Set(ctx context.Context, r *keyvalue.SetKeyValueRequest) (*keyvalue.KeyValueResponse, error) {
+	k.mutex.Lock()
 	k.m[r.GetKey()] = r.GetValue()
+	k.mutex.Unlock()
 	return &keyvalue.KeyValueResponse{Value: r.GetValue()}, nil
 }
 
 // Get gets a value given a key, or say not found if
 // it doesn't exist
 func (k *KeyValue) Get(ctx context.Context, r *keyvalue.GetKeyValueRequest) (*keyvalue.KeyValueResponse, error) {
+	k.mutex.RLock()
+	defer k.mutex.RUnlock()
 	val, ok := k.m[r.GetKey()]
 	if !ok {
 		return nil, grpc.Errorf(codes.NotFound, "key not set")
