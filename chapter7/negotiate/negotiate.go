@@ -18,10 +18,8 @@ type Negotiator struct {
 func GetNegotiator(r *http.Request) *Negotiator {
 	contentType := r.Header.Get("Content-Type")
 
-	n := Negotiator{
+	return &Negotiator{
 		ContentType: contentType,
 		Render:      render.New(),
 	}
-
-	return &n
 }

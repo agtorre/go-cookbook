@@ -8,8 +8,7 @@ type Controller struct {
 // New initializes a controller with our
 // local validation, it can be overwritten
 func New() *Controller {
-	c := Controller{
+	return &Controller{
 		ValidatePayload: ValidatePayload,
 	}
-	return &c
 }

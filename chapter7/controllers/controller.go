@@ -7,10 +7,9 @@ type Controller struct {
 
 // New is a Controller 'constructor'
 func New(storage Storage) *Controller {
-	c := Controller{
+	return &Controller{
 		storage: storage,
 	}
-	return &c
 }
 
 // Payload is our common response
