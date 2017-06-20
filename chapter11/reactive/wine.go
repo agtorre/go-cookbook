@@ -15,8 +15,8 @@ func GetWine() interface{} {
 	// some example wines
 	w := []interface{}{
 		Wine{"Merlot", 2011, 3.0},
-		Wine{"Cabarnet", 2010, 3.0},
-		Wine{"Chardanay", 2010, 4.0},
+		Wine{"Cabernet", 2010, 3.0},
+		Wine{"Chardonnay", 2010, 4.0},
 		Wine{"Pinot Grigio", 2009, 4.5},
 	}
 	return w
