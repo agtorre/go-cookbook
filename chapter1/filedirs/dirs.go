@@ -8,7 +8,7 @@ import (
 
 // Operate manipulates files and directories
 func Operate() error {
-	// this 0777 is similar to what you'd see with chown
+	// this 0755 is similar to what you'd see with chown
 	// on a command line this will create a director /tmp/example,
 	// you may also use an absolute path instead of a relative one
 	if err := os.Mkdir("example_dir", os.FileMode(0755)); err != nil {
