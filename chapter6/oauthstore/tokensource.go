@@ -26,8 +26,7 @@ func (s *storageTokenSource) Token() (*oauth2.Token, error) {
 	return token, nil
 }
 
-// StorageTokenSource will be used by out configs TokenSource
-// function
+// StorageTokenSource will be used by our config.TokenSource method
 func StorageTokenSource(ctx context.Context, c *Config, t *oauth2.Token) oauth2.TokenSource {
 	if t == nil || !t.Valid() {
 		if tok, err := c.Storage.GetToken(); err == nil {
