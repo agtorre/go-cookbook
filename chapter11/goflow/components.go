@@ -14,7 +14,7 @@ type Encoder struct {
 	Res chan<- string
 }
 
-// OnVal does the encoding then pushes the result onto Re
+// OnVal does the encoding then pushes the result onto Res
 func (e *Encoder) OnVal(val string) {
 	encoded := base64.StdEncoding.EncodeToString([]byte(val))
 	e.Res <- fmt.Sprintf("%s => %s", val, encoded)
