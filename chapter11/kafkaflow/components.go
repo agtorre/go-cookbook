@@ -15,7 +15,7 @@ type Upper struct {
 	Res chan<- string
 }
 
-// OnVal does the encoding then pushes the result onto Re
+// OnVal does the encoding then pushes the result onto Res
 func (e *Upper) OnVal(val string) {
 	e.Res <- strings.ToUpper(val)
 }
